@@ -23,5 +23,9 @@ class DatabaseSeeder extends Seeder
             'phone' => '081234567890',
             'role' => 'Admin'
         ]);
+
+        $this->call([
+            ServiceSeeder::class,
+        ]);
     }
 }
