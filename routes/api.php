@@ -16,6 +16,12 @@ Route::get('/services/{id}', [ServiceController::class, 'show']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [AuthController::class, 'user']);
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/change-password', [AuthController::class, 'changePassword']);
+
+    // Settings
+    Route::get('/settings', [\App\Http\Controllers\SettingController::class, 'index']);
+    Route::post('/settings', [\App\Http\Controllers\SettingController::class, 'update']);
+    Route::post('/settings/logo', [\App\Http\Controllers\SettingController::class, 'uploadLogo']);
 
     // Services (admin only in real app, but open for demo)
     Route::post('/services', [ServiceController::class, 'store']);
